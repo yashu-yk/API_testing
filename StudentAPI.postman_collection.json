@@ -12,6 +12,17 @@
       "item": [
         {
           "name": "Create student",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// just to test it\r\n\r\nconst jsonData = pm.response.json();\r\n\r\npm.collectionVariables.set(\"studentId\", jsonData.id);"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -44,7 +55,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  " pm.test(\"status code is 200\",()=>{\n    pm.response.to.have.status(200)\n    });\n\n pm.test(\"Successfull get request\", ()=>{\n    pm.expect(pm.response.code).to.be.oneOf([200,201,202]) \n    });\n\n pm.test(\"Content type header is present\", ()=>{\n    pm.response.to.have.header(\"Content-Type\")\n    });\n\n pm.test(\"Content type header is application/json\", ()=>{\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\")\n    });\n\n pm.test(\"Cookie 'language' is present?\", ()=>{\n     pm.expect(pm.cookies.has(\"language\")).to.be.true\n    });\n\npm.test(\"Response time is less than 200ms\", () => {\n    pm.expect(pm.response.responseTime).to.be.below(200)\n    });\n\nconst jsonData = pm.response.json();\npm.test(\"Test data type of the response\", ()=>{ \n    pm.expect(jsonData).to.be.an(\"object\");\n    pm.expect(jsonData.name).to.be.a(\"string\");\n    pm.expect(jsonData.location).to.be.a(\"string\");\n    pm.expect(jsonData.phone).to.be.a(\"string\");\n    pm.expect(jsonData.courses).to.be.an('array');\n    pm.expect(jsonData.id).to.be.a(\"string\");\n    });\n\n    pm.test(\"Test array properties\", ()=>{\n        pm.expect(jsonData.courses).to.include(\"Java\")\n        pm.expect(jsonData.courses).to.have.members([\"Java\",\"Selenium\"])\n    });\n\n\n    pm.test(\"Test data where location is india\", ()=>{ \n    pm.expect(jsonData.id).to.eql(\"1\");\n    pm.expect(jsonData.name).to.eql(\"John\");\n    pm.expect(jsonData.location).to.eql(\"India\");\n    pm.expect(jsonData.phone).to.eql(\"1234567890\");\n    pm.expect(jsonData.courses[0]).to.eql(\"Java\");\n     pm.expect(jsonData.courses[1]).to.eql(\"Selenium\");\n    });\n\n    const schema = {\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Generated schema for Root\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"location\": {\n      \"type\": \"string\"\n    },\n    \"phone\": {\n      \"type\": \"string\"\n    },\n    \"courses\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\n    \"id\",\n    \"name\",\n    \"location\",\n    \"phone\",\n    \"courses\"\n  ]\n}\n\npm.test(\"Response body matches schema\", () => {\n    pm.response.to.have.jsonSchema(schema);\n});\n"
+                  " pm.test(\"status code is 200\",()=>{\n    pm.response.to.have.status(200)\n    });\n\n pm.test(\"Successfull get request\", ()=>{\n    pm.expect(pm.response.code).to.be.oneOf([200,201,202]) \n    });\n\n pm.test(\"Content type header is present\", ()=>{\n    pm.response.to.have.header(\"Content-Type\")\n    });\n\n pm.test(\"Content type header is application/json\", ()=>{\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\")\n    });\n\n pm.test(\"Cookie 'language' is present?\", ()=>{\n     pm.expect(pm.cookies.has(\"language\")).to.be.true\n    });\n\npm.test(\"Response time is less than 200ms\", () => {\n    pm.expect(pm.response.responseTime).to.be.below(200)\n    });\n\nconst jsonData = pm.response.json();\npm.test(\"Test data type of the response\", ()=>{ \n    pm.expect(jsonData).to.be.an(\"object\");\n    pm.expect(jsonData.name).to.be.a(\"string\");\n    pm.expect(jsonData.location).to.be.a(\"string\");\n    pm.expect(jsonData.phone).to.be.a(\"string\");\n    pm.expect(jsonData.courses).to.be.an('array');\n    pm.expect(jsonData.id).to.be.a(\"string\");\n    });\n\n    pm.test(\"Test array properties\", ()=>{\n        pm.expect(jsonData.courses).to.include(\"Java\")\n        pm.expect(jsonData.courses).to.have.members([\"Java\",\"Selenium\"])\n    });\n\n\n    pm.test(\"validate id of the response\", ()=>{ \n    pm.expect(jsonData.id).to.eql(pm.collectionVariables.get(\"studentId\"));\n    });\n\n    const schema = {\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Generated schema for Root\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"location\": {\n      \"type\": \"string\"\n    },\n    \"phone\": {\n      \"type\": \"string\"\n    },\n    \"courses\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\n    \"id\",\n    \"name\",\n    \"location\",\n    \"phone\",\n    \"courses\"\n  ]\n}\n\npm.test(\"Response body matches schema\", () => {\n    pm.response.to.have.jsonSchema(schema);\n});\n"
                 ]
               }
             }
@@ -58,13 +69,13 @@
               }
             ],
             "url": {
-              "raw": "{{url_qa_env}}/students/1",
+              "raw": "{{url_qa_env}}/students/{{studentId}}",
               "host": [
                 "{{url_qa_env}}"
               ],
               "path": [
                 "students",
-                "1"
+                "{{studentId}}"
               ]
             }
           },
@@ -88,7 +99,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n      \"name\": \"omega\",\r\n      \"location\": \"universe\",\r\n      \"phone\": \"1234444567890\",\r\n      \"courses\": [\r\n        \"Java\",\r\n        \"Selenium\"\r\n      ]\r\n    }",
+              "raw": "",
               "options": {
                 "raw": {
                   "language": "json"
@@ -96,9 +107,9 @@
               }
             },
             "url": {
-              "raw": "{{url_dev_env}}/students",
+              "raw": "{{url_global}}/students",
               "host": [
-                "{{url_dev_env}}"
+                "{{url_global}}"
               ],
               "path": [
                 "students"
@@ -122,13 +133,13 @@
               }
             },
             "url": {
-              "raw": "{{url_global}}/students/GXiKoeqFbDM",
+              "raw": "{{url_global}}/students/{{studentId}}",
               "host": [
                 "{{url_global}}"
               ],
               "path": [
                 "students",
-                "GXiKoeqFbDM"
+                "{{studentId}}"
               ]
             }
           },
@@ -149,19 +160,29 @@
               }
             },
             "url": {
-              "raw": "{{url_global}}/students/-s_En_084AY",
+              "raw": "{{url_global}}/students/{{studentId}}",
               "host": [
                 "{{url_global}}"
               ],
               "path": [
                 "students",
-                "-s_En_084AY"
+                "{{studentId}}"
               ]
             }
           },
           "response": []
         }
       ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "orderId",
+      "value": ""
+    },
+    {
+      "key": "studentId",
+      "value": ""
     }
   ]
 }
