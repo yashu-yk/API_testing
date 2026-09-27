@@ -1,0 +1,115 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "John",
+      "location": "India",
+      "phone": "1234567890",
+      "courses": [
+        "Java",
+        "Selenium"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Kim",
+      "location": "US",
+      "phone": "9887654321",
+      "courses": [
+        "Python",
+        "Django"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "David",
+      "location": "UK",
+      "phone": "9876543210",
+      "courses": [
+        "JavaScript",
+        "React"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Sarah",
+      "location": "Canada",
+      "phone": "9123456780",
+      "courses": [
+        "C#",
+        "Selenium"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Alex",
+      "location": "Australia",
+      "phone": "8765432109",
+      "courses": [
+        "Java",
+        "Spring Boot"
+      ]
+    },
+    {
+      "name": "omega",
+      "location": "universe",
+      "phone": "1234444567890",
+      "courses": [
+        "Java",
+        "Selenium"
+      ],
+      "id": "5BgAaXCh31Q"
+    },
+    {
+      "name": "omega",
+      "location": "universe",
+      "phone": "1234444567890",
+      "courses": [
+        "Java",
+        "Selenium"
+      ],
+      "id": "c3biGHXTQ3o"
+    },
+    {
+      "name": "omega",
+      "location": "universe",
+      "phone": "1234444567890",
+      "courses": [
+        "Java",
+        "Selenium"
+      ],
+      "id": "RnlBynbRxBk"
+    },
+    {
+      "name": "omega",
+      "location": "universe",
+      "phone": "1234444567890",
+      "courses": [
+        "Java",
+        "Selenium"
+      ],
+      "id": "sqtH2n5RMQM"
+    },
+    {
+      "name": "omega",
+      "location": "universe",
+      "phone": "1234444567890",
+      "courses": [
+        "Java",
+        "Selenium"
+      ],
+      "id": "LOQwZwJdCPI"
+    },
+    {
+      "name": "omega",
+      "location": "universe",
+      "phone": "1234444567890",
+      "courses": [
+        "Java",
+        "Selenium"
+      ],
+      "id": "zMN-fnQLlIc"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
